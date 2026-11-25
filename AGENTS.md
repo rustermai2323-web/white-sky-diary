@@ -33,3 +33,4 @@ use the editor.
 - Keep survival state transitions in a pure browser-safe module with deterministic tests so resource costs and endings remain independently verifiable.
 - Keep play-session state in React and disclose generated scene imagery as fictional reconstruction; no backend or persistent save is implemented.
 - Define the visual system centrally in src/styles.css and use the shared Button for game controls to maintain coherent interaction states.
+- Keep dated story beats, news paraphrases, evacuation windows and ending rules in the pure chronicle module; the UI only animates timestamps so pacing never changes narrative outcomes.
