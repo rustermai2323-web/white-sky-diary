@@ -28,3 +28,8 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Game architecture
+- Keep survival state transitions in a pure browser-safe module with deterministic tests so resource costs and endings remain independently verifiable.
+- Keep play-session state in React and disclose generated scene imagery as fictional reconstruction; no backend or persistent save is implemented.
+- Define the visual system centrally in src/styles.css and use the shared Button for game controls to maintain coherent interaction states.
