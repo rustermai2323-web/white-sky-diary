@@ -34,3 +34,6 @@ use the editor.
 - Keep play-session state in React and disclose generated scene imagery as fictional reconstruction; no backend or persistent save is implemented.
 - Define the visual system centrally in src/styles.css and use the shared Button for game controls to maintain coherent interaction states.
 - Keep dated story beats, news paraphrases, evacuation windows and ending rules in the pure chronicle module; the UI only animates timestamps so pacing never changes narrative outcomes.
+
+- Keep room actions, travel costs, seeded random finds and patrol encounters in the pure world module; inject random draws in tests so every survival rule has reproducible coverage.
+- Resolve and decode the target image before committing a scene or room change; retain the previous image under the crossfade and roll back a failed transition to prevent blank frames or lost actions.

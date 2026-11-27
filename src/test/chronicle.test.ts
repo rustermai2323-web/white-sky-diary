@@ -2,11 +2,11 @@ import { describe, expect, it } from 'vitest';
 import { chapters, chapterAt, clockLabel, decide, opening, transitionTime, type ChronicleState } from '../lib/chronicle';
 function reach(id: string) { let state: ChronicleState = opening; for (let i = 0; i < chapters.length && chapterAt(state).id !== id; i++) state = decide(state, { type: 'continue' }); return state; }
 describe('dated chronicle', () => {
-  it('starts one week before February 24', () => { expect(chapterAt(opening).at).toBe('2022-02-17T18:10:00Z'); });
-  it('moves from 04:00 through the first alarms to 08:00 on February 24', () => {
+  it('starts one week before February 24', () => { expect(chapterAt(opening).at).toBe('2022-02-17T18:13:00Z'); });
+  it('moves from 04:07 through the first alarms to 08:21 on February 24', () => {
     let state = reach('four'); const times = [clockLabel(chapterAt(state).at)];
     for (let i = 0; i < 3; i++) { state = decide(state, { type: 'continue' }); times.push(clockLabel(chapterAt(state).at)); }
-    expect(times).toEqual(['04:00', '04:15', '05:30', '08:00']); expect(chapterAt(state).at.slice(0, 10)).toBe('2022-02-24');
+    expect(times).toEqual(['04:07', '04:19', '05:36', '08:21']); expect(chapterAt(state).at.slice(0, 10)).toBe('2022-02-24');
   });
   it('allows the civilian to survive by leaving on February 25, 26 or 27', () => { for (const id of ['departure-one', 'departure-two', 'last-chance']) expect(decide(reach(id), { type: 'escape' }).ending).toBe('escaped'); });
   it('does not allow early or late evacuation', () => { expect(decide(opening, { type: 'escape' })).toBe(opening); const closed = reach('closed'); expect(decide(closed, { type: 'escape' })).toBe(closed); });
